@@ -3,7 +3,7 @@ import io.kotest.matchers.shouldBe
 
 data class TestData(val number: Int, val expected: List<Int>)
 
-class PrimeFactorsTest : FreeSpec ({
+class PrimeFactorsTest : FreeSpec({
     listOf(
         TestData(1, emptyList()),
         TestData(2, listOf(2)),
@@ -17,7 +17,6 @@ class PrimeFactorsTest : FreeSpec ({
             PrimeFactors(number).generate() shouldBe expected
         }
     }
-
 })
 
 class PrimeFactors(private var number: Int) {
@@ -33,5 +32,4 @@ class PrimeFactors(private var number: Int) {
         }
         return primes
     }
-
 }
