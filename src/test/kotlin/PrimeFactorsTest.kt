@@ -11,6 +11,7 @@ class PrimeFactorsTest : FreeSpec ({
         TestData(4, listOf(2, 2)),
         TestData(6, listOf(2, 3)),
         TestData(8, listOf(2, 2, 2)),
+        TestData(9, listOf(3, 3)),
     ).forEach { (number, expected) ->
         "Prime factors of $number should be $expected" {
             PrimeFactors(number).generate() shouldBe expected
@@ -22,13 +23,13 @@ class PrimeFactorsTest : FreeSpec ({
 class PrimeFactors(private var number: Int) {
     fun generate(): List<Int> {
         val primes = mutableListOf<Int>()
-        if (number > 1) {
-            while (number % 2 == 0) {
-                primes.add(2)
-                number /= 2
+        var candidate = 2
+        while (number > 1) {
+            while (number % candidate == 0) {
+                primes.add(candidate)
+                number /= candidate
             }
-            if (number > 1)
-                primes.add(number)
+            candidate++
         }
         return primes
     }
