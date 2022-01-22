@@ -1,13 +1,16 @@
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 
-class PrimeFactorsTest : FreeSpec ({
-    "test one" {
-        PrimeFactors(1).generate() shouldBe emptyList()
-    }
+data class TestData(val number: Int, val expected: List<Int>)
 
-    "test two" {
-        PrimeFactors(2).generate() shouldBe listOf(2)
+class PrimeFactorsTest : FreeSpec ({
+    listOf(
+        TestData(1, emptyList()),
+        TestData(2, listOf(2)),
+    ).forEach { (number, expected) ->
+        "Prime factors of $number should be $expected" {
+            PrimeFactors(number).generate() shouldBe expected
+        }
     }
 
 })
