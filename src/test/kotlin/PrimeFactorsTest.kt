@@ -9,6 +9,7 @@ class PrimeFactorsTest : FreeSpec ({
         TestData(2, listOf(2)),
         TestData(3, listOf(3)),
         TestData(4, listOf(2, 2)),
+        TestData(6, listOf(2, 3)),
     ).forEach { (number, expected) ->
         "Prime factors of $number should be $expected" {
             PrimeFactors(number).generate() shouldBe expected
