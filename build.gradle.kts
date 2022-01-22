@@ -13,3 +13,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.kotest:kotest-runner-junit5-jvm:5.1.0")
 }
+
+tasks.test {
+    useJUnitPlatform()
+}
